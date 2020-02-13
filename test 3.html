@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+var word = "ABC";
+var result = generate(word);
+result = result.filter((v,i) => result.indexOf(v) === i);
+console.log(result);
+function generate(word){
+  if (word.length < 2) return word;
+  var newWord = [];
+  for (var i = 0; i < word.length; i++) {
+    var char = word[i];
+    var subword = word.slice(0, i) + word.slice(i + 1, word.length);
+    for (var newText of generate(subword)){
+      newWord.push(char + newText)
+    }
+  }
+  return newWord
+}
+</script>
+
+</body>
+</html>

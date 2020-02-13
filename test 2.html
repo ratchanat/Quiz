@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+var words = ['VMRCO', 'VORCM', 'MCRTOX', 'ZXTAC', 'XZATC', 'XMTCOR', 'OXVS', 'AZTXC', 'VXOS', 'RZAT', 'MRCOTX', 'SVXO',
+'TRAZ', 'ZTAR', 'MVOCR'];
+console.log(grouping(words));
+function grouping(words){
+    var group = [];
+    while(words.length >0){
+        var charectors = words[1].split('');
+        var filted = words.filter(e=> {return findVal(e,charectors)});
+        group.push(filted.join(" - "));
+        words = words.filter(e =>{ return filted.indexOf(e) === -1 });
+    }
+    return group;
+}
+
+function findVal(word, charectors) {
+    for(var i = 0 ; i< charectors.length ; i++){
+        if(word.indexOf(charectors[i]) != -1){
+            continue;
+        }else{
+            return false;
+        }
+    }
+  return  true;
+}
+</script>
+
+</body>
+</html>
